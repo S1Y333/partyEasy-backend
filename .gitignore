@@ -1,0 +1,14 @@
+.idea/
+.vscode/
+node_modules/
+build/
+tmp/
+temp/
+.env
+yarn.lock
+.DS_Store
+public/
+log/
+build/
+dump.rdb
+
