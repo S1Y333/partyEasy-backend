@@ -1,21 +1,21 @@
 import "reflect-metadata";
 import { DataSource, DataSourceOptions } from "typeorm";
 import { runSeeders, SeederOptions } from "typeorm-extension";
-import { UserEntity } from "../entities/user";
-import { VenueEntity } from "../entities/venue";
-import { PackageListEntity } from "../entities/packageList";
-import { DrinkEntity } from "../entities/drinks";
-import { FoodEntity } from "../entities/food";
-import { PartySuppliesEntity } from "../entities/partySupply";
+import { UserEntity } from "../entities/user.entity";
+import { VenueEntity } from "../entities/venue.entity";
+import { PackageListEntity } from "../entities/packageList.entity";
+import { DrinkEntity } from "../entities/drinks.entity";
+import { FoodEntity } from "../entities/food.entity";
+import { PartySuppliesEntity } from "../entities/partySupply.entity";
 import { UserFactory } from "./users.factory";
 import { VenueFactory } from "./venues.factory";
 import { DrinkFactory } from "./drinks.factory";
 import { FoodFactory } from "./foods.factory";
-import { PartySuppliesFactory } from './partySupplies.factory'
+import { PartySuppliesFactory } from "./partySupplies.factory";
 import { PackageListFactory } from "./packageList.factory";
 import MainSeeder from "./main.seeder";
 import * as path from "path";
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
 
 dotenv.config();
 
@@ -25,8 +25,7 @@ const {
   MYSQL_PRIMARY_PASSWORD,
   MYSQL_PRIMARY_DATABASE,
   MYSQL_HOST,
-    MYSQL_PORT,
-  
+  MYSQL_PORT,
 } = process.env;
 const entityPath = path.join(__dirname + "/entities/*.ts");
 const dbPort = +process.env.MYSQL_PORT;

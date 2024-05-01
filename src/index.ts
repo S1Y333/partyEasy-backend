@@ -2,7 +2,7 @@ import dotenv from 'dotenv'
 import express, { Express } from "express";
 import cors from "cors";
 import routes from './routes/index'
-
+import gDB from './data-source';
 
 
 const CLIENT_URL = process.env.CLIENT_URL;
@@ -13,7 +13,11 @@ const SERVER_PORT = process.env.SERVER_PORT || 8080 // Default to 3800 if not sp
 export const app: Express = express();
 
 const startSever = async () => {
-    try {const corsOptions = {
+
+  try {
+    await gDB.initialize();
+
+    const corsOptions = {
       origin: process.env.FRONTEND_URL,
       methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
       allowedHeaders: ["Content-Type", "authtoken", "Authorization"],
@@ -24,7 +28,7 @@ const startSever = async () => {
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
     
-    app.use("/", routes);
+    app.use("/api", routes);
 
     app.listen(SERVER_PORT, () => {
       console.log(`🚀 Server running on ${SERVER_PORT}`);

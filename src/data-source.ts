@@ -3,16 +3,16 @@ import dotenv from "dotenv";
 import * as path from "path";
 
 dotenv.config();
-const dbPort = +process.env.MYSQL_PORT;
+const dbPort = +process.env.MYSQL_PORT ;
 
 if (isNaN(dbPort)) {
   console.log(`Invalid DB PORT:-->${dbPort}`);
   process.exit(1);
 }
 
-const entityPath = path.join(__dirname + "/entities/*.ts");
+const entityPath = path.join(__dirname + "/entities/**/*.entity{.ts,.js}");
 
-export const AppDataSource = new DataSource({
+const options: DataSourceOptions = {
   type: "mysql",
   host: process.env.MYSQL_PRIMARY_HOST,
   port: dbPort,
@@ -25,4 +25,7 @@ export const AppDataSource = new DataSource({
   subscribers: [],
   migrations: [],
   charset: "utf8",
-});
+};
+
+const gDB = new DataSource(options);
+export default gDB;

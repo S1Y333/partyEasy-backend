@@ -6,8 +6,8 @@ import {
   ManyToMany,
   JoinTable,
 } from "typeorm";
-import { BaseTemplate } from "./base";
-import { PackageListEntity } from "./packageList";
+import { BaseTemplate } from "./base.entiy";
+import { PackageListEntity } from "./packageList.entity";
 
 @Entity("venue")
 export class VenueEntity extends BaseTemplate {
@@ -17,7 +17,7 @@ export class VenueEntity extends BaseTemplate {
   @Column({ nullable: false, type: "decimal", precision: 10, scale: 2 })
   price: number; //DECIMAL type with a precision of 10 digits and a scale of 2 decimal places
 
-  @Column('json',{ nullable: false })
+  @Column("json", { nullable: false })
   location: any;
 
   @OneToMany(() => PackageListEntity, (pack) => pack.venues)

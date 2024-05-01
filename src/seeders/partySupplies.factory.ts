@@ -1,6 +1,6 @@
 import { Faker } from "@faker-js/faker";
 import { setSeederFactory } from "typeorm-extension";
-import { PartySuppliesEntity } from "../entities/partySupply";
+import { PartySuppliesEntity } from "../entities/partySupply.entity";
 
 export const PartySuppliesFactory = setSeederFactory(
   PartySuppliesEntity,
@@ -13,7 +13,7 @@ export const PartySuppliesFactory = setSeederFactory(
         max: 10000,
       })
     ); // $114
-   
+
     return partySupplies;
   }
 );

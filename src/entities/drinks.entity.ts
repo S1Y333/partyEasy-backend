@@ -6,8 +6,8 @@ import {
   ManyToMany,
   JoinTable,
 } from "typeorm";
-import { BaseTemplate } from "./base";
-import { PackageListEntity } from "./packageList";
+import { BaseTemplate } from "./base.entiy";
+import { PackageListEntity } from "./packageList.entity";
 
 @Entity("drinks")
 export class DrinkEntity extends BaseTemplate {
@@ -18,7 +18,7 @@ export class DrinkEntity extends BaseTemplate {
   price: number; //DECIMAL type with a precision of 10 digits and a scale of 2 decimal places
 
   @Column({ nullable: false })
-  category: 'alcohol' | 'non-alcohol'; //
+  category: "alcohol" | "non-alcohol"; //
 
   @ManyToMany(() => PackageListEntity, (pack) => pack.drinks)
   packages: PackageListEntity;

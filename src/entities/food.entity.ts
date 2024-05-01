@@ -1,14 +1,12 @@
-import { BaseTemplate } from "./base";
+import { BaseTemplate } from "./base.entiy";
 import { Entity, Column, PrimaryGeneratedColumn, ManyToMany } from "typeorm";
-import {PackageListEntity} from "./packageList";
-
-
+import { PackageListEntity } from "./packageList.entity";
 
 enum FoodOptions {
   PIZZA = "pizza",
   SUSHI = "sushi",
-    MEXICO = "mexico",
-  CHICKEN="chicken"
+  MEXICO = "mexico",
+  CHICKEN = "chicken",
 }
 
 @Entity("food")

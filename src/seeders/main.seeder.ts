@@ -1,11 +1,11 @@
 import { DataSource } from "typeorm";
 import { Seeder, SeederFactoryManager } from "typeorm-extension";
-import { UserEntity } from "../entities/user";
-import { VenueEntity } from "../entities/venue";
-import { DrinkEntity } from "../entities/drinks";
-import { FoodEntity } from "../entities/food";
-import { PartySuppliesEntity } from "../entities/partySupply";
-import { PackageListEntity } from "../entities/packageList";
+import { UserEntity } from "../entities/user.entity";
+import { VenueEntity } from "../entities/venue.entity";
+import { DrinkEntity } from "../entities/drinks.entity";
+import { FoodEntity } from "../entities/food.entity";
+import { PartySuppliesEntity } from "../entities/partySupply.entity";
+import { PackageListEntity } from "../entities/packageList.entity";
 import { faker } from "@faker-js/faker";
 
 export default class MainSeeder implements Seeder {
@@ -13,7 +13,6 @@ export default class MainSeeder implements Seeder {
     dataSource: DataSource,
     factoryManager: SeederFactoryManager
   ): Promise<any> {
-      
     // Run the factories here
     const userFactory = factoryManager.get(UserEntity);
     const users = await userFactory.saveMany(7);
@@ -37,22 +36,22 @@ export default class MainSeeder implements Seeder {
     //packagelists
     // const packageListFactory = factoryManager.get(PackageListEntity);
     // const packageList = await packageListFactory.saveMany(7);
-      const packagesRepository = dataSource.getRepository(PackageListEntity);
+    const packagesRepository = dataSource.getRepository(PackageListEntity);
     //   const usersRepository = dataSource.getRepository(UserEntity);
 
     //   const usersNew = await usersRepository.find();
 
-      const packageListFactory = factoryManager.get(PackageListEntity);
-      const packages = await Promise.all(
-        Array(10)
-          .fill("")
-          .map(async () => {
-            const made = await packageListFactory.make({
-              creator: faker.helpers.arrayElement(users),
-            });
-            return made;
-          })
-      );
-      await packagesRepository.save(packages);
+    const packageListFactory = factoryManager.get(PackageListEntity);
+    const packages = await Promise.all(
+      Array(10)
+        .fill("")
+        .map(async () => {
+          const made = await packageListFactory.make({
+            creator: faker.helpers.arrayElement(users),
+          });
+          return made;
+        })
+    );
+    await packagesRepository.save(packages);
   }
 }

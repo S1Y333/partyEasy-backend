@@ -7,11 +7,11 @@ import {
   JoinTable,
   ManyToOne,
 } from "typeorm";
-import { BaseTemplate } from "./base";
-import { UserEntity } from "./user";
-import { VenueEntity } from "./venue";
-import { DrinkEntity } from "./drinks";
-import { FoodEntity } from "./food";
+import { BaseTemplate } from "./base.entiy";
+import { UserEntity } from "./user.entity";
+import { VenueEntity } from "./venue.entity";
+import { DrinkEntity } from "./drinks.entity";
+import { FoodEntity } from "./food.entity";
 
 @Entity("packageList")
 export class PackageListEntity extends BaseTemplate {

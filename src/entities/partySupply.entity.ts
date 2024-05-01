@@ -6,7 +6,7 @@ import {
   ManyToMany,
   JoinTable,
 } from "typeorm";
-import { BaseTemplate } from "./base";
+import { BaseTemplate } from "./base.entiy";
 
 @Entity("partySupplies")
 export class PartySuppliesEntity extends BaseTemplate {
