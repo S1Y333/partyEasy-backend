@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import * as path from "path";
 
 dotenv.config();
-const dbPort = +process.env.MYSQL_PORT ;
+const dbPort = +process.env.MYSQL_PORT;
 
 if (isNaN(dbPort)) {
   console.log(`Invalid DB PORT:-->${dbPort}`);

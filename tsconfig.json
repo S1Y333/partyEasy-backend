@@ -3,7 +3,7 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "lib": ["es5", "es6", "es2019", "dom", "esnext"],
-    "target": "es6",
+    "target": "es6",//es6
     "module": "commonjs",
     "moduleResolution": "node",
     "outDir": "./build",

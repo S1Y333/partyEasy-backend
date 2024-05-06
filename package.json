@@ -2,6 +2,7 @@
   "name": "partyeasy-backend",
   "version": "1.0.0",
   "description": "## Overview",
+  "type": "commonjs",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -23,15 +24,20 @@
   "dependencies": {
     "@faker-js/faker": "^8.4.1",
     "@types/express": "^4.17.21",
+    "axios": "^1.6.8",
+    "cloudinary": "^2.2.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "firebase-admin": "^12.1.0",
+    "multer": "^1.4.5-lts.1",
     "mysql2": "^3.9.7",
     "nodemailer": "^6.9.13",
+    "puppeteer": "^22.7.1",
     "reflect-metadata": "^0.2.2",
     "typeorm": "^0.3.20",
-    "typeorm-extension": "^3.5.1"
+    "typeorm-extension": "^3.5.1",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@types/node": "^20.12.7",

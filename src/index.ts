@@ -3,6 +3,7 @@ import express, { Express } from "express";
 import cors from "cors";
 import routes from './routes/index'
 import gDB from './data-source';
+import path from 'path';
 
 
 const CLIENT_URL = process.env.CLIENT_URL;
@@ -24,8 +25,10 @@ const startSever = async () => {
     };
 
     app.use(cors(corsOptions));
-    app.use(express.static("public"));
+    // app.use(express.static("public"));
+    app.use("/uploads", express.static(path.join(__dirname, "uploads")));
     app.use(express.json());
+    
     app.use(express.urlencoded({ extended: true }));
     
     app.use("/api", routes);

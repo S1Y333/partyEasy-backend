@@ -5,7 +5,7 @@ import { FoodEntity } from "../entities/food.entity";
 import {DrinkEntity} from "../entities/drinks.entity"
 import { PackageListEntity } from "../entities/packageList.entity";
 
-class RespositoryHelper {
+class RepositoryHelper {
   static get userRepo() {
     return gDB.getRepository(UserEntity);
   }
@@ -27,4 +27,4 @@ class RespositoryHelper {
  }
 }
 
-export default RespositoryHelper;
+export default RepositoryHelper;

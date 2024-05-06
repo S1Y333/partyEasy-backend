@@ -26,15 +26,18 @@ export class PackageListEntity extends BaseTemplate {
 
   @ManyToMany(() => DrinkEntity, (drink) => drink.packages)
   @JoinTable()
-  drinks: DrinkEntity;
+  drinks: DrinkEntity[];
 
   @ManyToMany(() => FoodEntity, (food) => food.packages)
   @JoinTable()
-  foods: FoodEntity;
+  foods: FoodEntity[];
 
   @Column({ nullable: true, default: 0 })
   likes: number;
 
   @Column({ nullable: true, default: 0 })
   saves: number;
+
+  @Column({ nullable: true, default: null })
+  coverphotolink: string;
 }

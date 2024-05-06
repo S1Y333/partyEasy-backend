@@ -21,6 +21,6 @@ export class FoodEntity extends BaseTemplate {
   price: number;
 
   @ManyToMany(() => PackageListEntity, (pack) => pack.foods)
-  packages: PackageListEntity;
+  packages: PackageListEntity[];
   //maybe add restaurant name & location later
 }

@@ -17,8 +17,9 @@ export class UserEntity extends BaseTemplate {
 
   @Column({ nullable: true, default: null })
   username: string;
+
   @Column({ nullable: true, default: null })
-  profilelink: string;
+  profilephotolink: string;
 
   @OneToMany(() => PackageListEntity, (pack) => pack.creator)
   packages: PackageListEntity[];

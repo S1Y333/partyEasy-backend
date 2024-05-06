@@ -21,5 +21,5 @@ export class DrinkEntity extends BaseTemplate {
   category: "alcohol" | "non-alcohol"; //
 
   @ManyToMany(() => PackageListEntity, (pack) => pack.drinks)
-  packages: PackageListEntity;
+  packages: PackageListEntity [];
 }
