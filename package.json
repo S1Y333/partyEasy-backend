@@ -1,0 +1,47 @@
+{
+  "name": "partyeasy-backend",
+  "version": "1.0.0",
+  "description": "## Overview",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node-dev ./src/index.ts",
+    "schema:sync": "ts-node ./node_modules/typeorm/cli.js schema:sync -d src/data-source.ts",
+    "seed": "ts-node src/seeders/seed.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/S1Y333/partyEasy-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/S1Y333/partyEasy-backend/issues"
+  },
+  "homepage": "https://github.com/S1Y333/partyEasy-backend#readme",
+  "dependencies": {
+    "@faker-js/faker": "^8.4.1",
+    "@types/express": "^4.17.21",
+    "axios": "^1.6.8",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "firebase-admin": "^12.1.0",
+    "multer": "^1.4.5-lts.1",
+    "mysql2": "^3.9.7",
+    "puppeteer": "^22.7.1",
+    "reflect-metadata": "^0.2.2",
+    "socket.io": "^4.7.5",
+    "typeorm": "^0.3.20",
+    "typeorm-extension": "^3.5.1",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.7",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.4.5"
+  }
+}
