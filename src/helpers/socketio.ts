@@ -1,14 +1,11 @@
 import { Server, Socket } from "socket.io";
-import { createServer } from "http";
+import { Server as HttpServer } from "http";
 
 
 let io: Server;
 
-export async function setupSocketIO() {
-    const server = createServer();
-
+export async function setupSocketIO(server: HttpServer) {
   try {
-    
     io = new Server(server, {
       cors: {
         origin: process.env.FRONTEND_URL || "http://localhost:3000",
@@ -16,23 +13,49 @@ export async function setupSocketIO() {
       },
     });
 
-      io.on("connection", (socket:Socket) => {
+    // io.on("connection", (socket: Socket) => {
+    //   console.log(`User ${socket.id} connected`);
+
+    //   socket.on("message", (data: string) => {
+    //     io.emit("message", `${socket.id.substring(0, 5)}: ${data}`);
+    //   });
+
+    //   socket.on("disconnect", () => {
+    //     console.log("User disconnected");
+    //   });
+      // });
+      io.on('connection', socket => {
           console.log(`User ${socket.id} connected`)
-          
-          socket.on('message',(data: string) => {
-              
+
+          // Upon connection - only to user 
+          socket.emit('message', "Welcome to Party Easy Chat Zone!")
+
+          // Upon connection - to all others 
+          socket.broadcast.emit('message', `User ${socket.id.substring(0, 5)}} connected`)
+
+          // Listening for a message event 
+          socket.on('message', data => {
+              console.log(data)
               io.emit('message', `${socket.id.substring(0, 5)}: ${data}`)
-              
           })
-           socket.on("disconnect", () => {});
+
+          // When user disconnects - to all others 
+        //   socket.on('disconnect', () => {
+        //       socket.broadcast.emit('message', `User ${socket.id.substring(0, 5)}} disconnected`)
+        //   })
+
+          // Listen for activity 
+        //   socket.on('activity', (name) => {
+        //       socket.broadcast.emit('activity', name)
+        //   })
       })
-     
-      server.listen(3500, () => console.log("listening on port 3500"));
+   
   } catch (error) {
-    console.error("Error during Socket.IO setup:", error.stack || error.message);
+    console.error(
+      "Error during Socket.IO setup:",
+      error.stack || error.message
+    );
   }
-
-
+     return io;
 }
-
 export { io };

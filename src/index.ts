@@ -26,7 +26,7 @@ const startSever = async () => {
 
     app.use(cors(corsOptions));
 
-   
+   const server = http.createServer(app);
     // app.use(express.static("public"));
     app.use("/uploads", express.static(path.join(__dirname, '../uploads')));
     app.use(express.json());
@@ -35,17 +35,12 @@ const startSever = async () => {
 
     app.use("/api", routes);
       // const server = http.createServer(app);
-    app.listen(SERVER_PORT, () => {
+    server.listen(SERVER_PORT, () => {
       console.log(`🚀 Server running on ${SERVER_PORT}`);
     });
-  } catch (error) {
-    console.error(error.stack);
-    //res.status(500).send("Something broke!");
-  }
-//  const server = http.createServer(app);
-  try {
-  
-    setupSocketIO();
+    try {
+      setupSocketIO(server);
+     
     console.log("Socket.IO has been initialized successfully.");
   } catch (error) {
     console.error(
@@ -53,6 +48,13 @@ const startSever = async () => {
       error.stack || error.message
     );
   }
+
+  } catch (error) {
+    console.error(error.stack);
+    //res.status(500).send("Something broke!");
+  }
+
+  
 };
 
 startSever();

@@ -1,55 +1,97 @@
-# Project Title
+#  Party Easy App (Backend)
 
-## Overview
+  
 
-What is your app? Brief description in a couple of sentences.
+##  App Overview
 
-### Problem
+ 
+The app is designed to organize party easily but also include almost everything for holding a party
 
-Why is your app needed? Background information around any pain points or other reasons.
 
-### User Profile
 
-Who will use your app? How will they use it? Any special considerations that your app must take into account.
+###  Problem
 
-### Features
+City life is around "BUSY". We're all busy with work, kids and everyday work & life. Sometimes we really want to organize a party to reunion with old friends or team members, even a surprise party for kids or your family, but planning a party is time consuming. Here, our app is to the rescue.
 
-List the functionality that your app will include. These can be written as user stories or descriptions with related details. Do not describe _how_ these features are implemented, only _what_ needs to be implemented.
+  
 
-## Implementation
+###  User Profile
 
-### Tech Stack
+  
 
-List technologies that will be used in your app, including any libraries to save time or provide more functionality. Be sure to research any potential limitations.
+Anyone who wants to organize a party, small or big.
 
-### APIs
+  
 
-List any external sources of data that will be used in your app.
+##  Backend Description
 
-### Sitemap
+There are 11 pages designed for different functionality.
 
-List the pages of your app with brief descriptions. You can show this visually, or write it out.
+##  Implementation
 
-### Mockups
+###  Tech Stack
 
-Provide visuals of your app's screens. You can use tools like Figma or pictures of hand-drawn sketches.
+--NodeJS
+--TypeScript
+--Firebase Admin
+--Socket.io
+--Multer
+--TypeORM
+--Puppeteer
+--Unsplash API
+###  Sitemap
 
-### Data
+screenshots the folder structure
+ 
+###  Endpoints
 
-Describe your data and the relationships between them. You can show this visually using diagrams, or write it out. 
+###  Usage
 
-### Endpoints
+npm i 
+set up .env environment variables
+config firebase admin file
+npm start to run the frontend
 
-List endpoints that your server will implement, including HTTP methods, parameters, and example responses.
+##  Features
 
-### Auth
+#### Auth
 
-Does your project include any login or user profile functionality? If so, describe how authentication/authorization will be implemented.
+User Login 
+User Signup -> Verfication Email ->Signup Complete Page (user can upload avatar and customize their username)
 
-## Roadmap
+Login success -> User Profile Page -> Create party package or log out
 
-Scope your project as a sprint. Break down the tasks that will need to be completed and map out timeframes for implementation. Think about what you can reasonably complete before the due date. The more detail you provide, the easier it will be to build.
+**Algorithm brief:** Frontend user authentication is handled by firebase, when logging user's authentication token will be sent to backend and will be verified by firebase admin (middleware). If successful, user can access their personal page, like profile page.
 
-## Nice-to-haves
+----
+Cover Page (Click on PLAN NOW) -> Fill in Questionnaire (address field is integrated with Google autoComplete function) -> Generate recommended package with unsplash API provided cover photo.
 
-Your project will be marked based on what you committed to in the above document. Under nice-to-haves, you can list any additional features you may complete if you have extra time, or after finishing.
+**Algorithm brief:** compare the location user entered  with the venue locations in db to find the venue which is located within radius (default 500km) and price is around 60% of the total budget(user entered). 
+
+Then pick the drink under user's choice (non-alcohol or alcohol) also the price of the drink is caculated based on requested number of guests and the budget.
+
+Then pick the food under user's choice category also the food price, the number of guests and the budget
+
+---
+Real-time Chat
+
+---
+Get real-time data from website and stored in db
+
+--
+TypeORM
+
+--
+Multer to handle user profile upload
+
+--
+Seed
+  
+
+##  4. More info
+
+####  Screenshots and GIFs
+
+Include screenshots or GIFs to visually represent your project's interface or
+
+functionality.
