@@ -117,7 +117,19 @@ The changes made to database structure will be happening in code instead of data
 
 ####  Screenshots
 
-Live Chat Room
+
 <img width="605" alt="Screen Shot 2024-05-07 at 1 18 23 PM" src="https://github.com/S1Y333/partyEasy-backend/assets/105386341/6c90c6c5-ca0d-402c-8d8e-0cdcfca6b80a">
+<img width="216" alt="user profile page with user created package" src="https://github.com/S1Y333/partyEasy-backend/assets/105386341/867be32d-1f01-466d-94d6-eae3ced5842e">
+<img width="216" alt="user profile page first time login" src="https://github.com/S1Y333/partyEasy-backend/assets/105386341/4643416e-5cd7-4568-a22f-3ddcb8f738aa">
+<img width="217" alt="social share modal" src="https://github.com/S1Y333/partyEasy-backend/assets/105386341/acd7f459-f133-4044-ab47-62bfe7e5c21f">
+<img width="215" alt="signup page" src="https://github.com/S1Y333/partyEasy-backend/assets/105386341/0fab8fa8-6533-43e5-9bd1-567457cbae64">
+<img width="215" alt="reset password" src="https://github.com/S1Y333/partyEasy-backend/assets/105386341/207edc04-5cf1-4417-9913-4c3d56bfe1c1">
+<img width="217" alt="questionaire page" src="https://github.com/S1Y333/partyEasy-backend/assets/105386341/6c296b0f-09b1-4a22-b50b-0000508f8cbb">
+<img width="217" alt="package list page" src="https://github.com/S1Y333/partyEasy-backend/assets/105386341/df60398d-048d-4133-a290-78b5a319a93b">
+<img width="216" alt="package detail page" src="https://github.com/S1Y333/partyEasy-backend/assets/105386341/565101bf-fef1-417d-b83b-ba97fb93d3c5">
+<img width="215" alt="login" src="https://github.com/S1Y333/partyEasy-backend/assets/105386341/e1eb3ce9-382d-46d2-9144-33a7119db64f">
+<img width="217" alt="cover page" src="https://github.com/S1Y333/partyEasy-backend/assets/105386341/7edf8e42-b776-4e4f-9ecf-c1e9283ce07c">
+<img width="216" alt="complete sign up" src="https://github.com/S1Y333/partyEasy-backend/assets/105386341/e623d268-0c31-4b28-b207-2194a807080e">
+
 
 
