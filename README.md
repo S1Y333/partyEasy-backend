@@ -45,9 +45,11 @@ screenshots the folder structure
  
 ###  Endpoints
 
-####package: <img width="584" alt="Screen Shot 2024-05-07 at 9 59 39 AM" src="https://github.com/S1Y333/partyEasy-backend/assets/105386341/1d45794d-bbdf-4bc8-b257-9b3636f4f3f5">
+####package: 
+<img width="584" alt="Screen Shot 2024-05-07 at 9 59 39 AM" src="https://github.com/S1Y333/partyEasy-backend/assets/105386341/1d45794d-bbdf-4bc8-b257-9b3636f4f3f5">
 
-####user: <img width="733" alt="Screen Shot 2024-05-07 at 10 00 01 AM" src="https://github.com/S1Y333/partyEasy-backend/assets/105386341/82a9d785-63de-478c-b9e6-207b79dae96b">
+####user: 
+<img width="733" alt="Screen Shot 2024-05-07 at 10 00 01 AM" src="https://github.com/S1Y333/partyEasy-backend/assets/105386341/82a9d785-63de-478c-b9e6-207b79dae96b">
 
 ####venue data:
 <img width="408" alt="Screen Shot 2024-05-07 at 10 00 23 AM" src="https://github.com/S1Y333/partyEasy-backend/assets/105386341/09ec51ad-9ea6-4940-91de-aa8f15b01485">
@@ -72,16 +74,18 @@ npm run schema:sync
 ##  Features
 
 
-#### Auth
+#### Authentication
 
 User Login 
 User Signup -> Verfication Email ->Signup Complete Page (user can upload avatar and customize their username)
 
 Login success -> User Profile Page -> Create party package or log out
 
-**Algorithm brief:** Frontend user authentication is handled by firebase, when logging user's authentication token will be sent to backend and will be verified by firebase admin (middleware). If successful, user can access their personal page, like profile page.
+**Algorithm brief:** Frontend user authentication is handled by google firebase authentication, when logging user's authentication token will be sent to backend and will be verified by firebase admin (middleware). If successful, user can access their personal page, like profile page.
 
 ----
+#### Get party recommendation 
+
 Cover Page (Click on PLAN NOW) -> Fill in Questionnaire (address field is integrated with Google autoComplete function) -> Generate recommended package with unsplash API provided cover photo.
 
 **Algorithm brief:** compare the location user entered  with the venue locations in db to find the venue which is located within radius (default 500km) and price is around 60% of the total budget(user entered). 
@@ -91,25 +95,29 @@ Then pick the drink under user's choice (non-alcohol or alcohol) also the price 
 Then pick the food under user's choice category also the food price, the number of guests and the budget
 
 ---
-Real-time Chat
+#### Real-time Chat
+
+On the packagelist page, A real-time chatting room is provided to ask instant questions to peers
 
 ---
-Get real-time data from website and stored in db
+#### Web Scrapping data
+
+Integrated with Puppeteer to get real venue data and stored in database (from https://www.peerspace.com/pages/listings/627c4df5c986d7000e949580?sort_order=1), including location, numbers of people can accommodate, price/ per hour 
 
 --
-TypeORM
+#### TypeORM to manage db
+
+Implemented TypeORM Active Record pattern to create entities that maps to the database tables, which is easy to create and maintain database. 
+
+The changes made to database structure will be happening in code instead of database. After changing the structure, run scripts ( npm run schema:sync), so the database will be updated.
 
 --
-Multer to handle user profile upload
-
---
-Seed
-  
 
 ##  4. More info
 
-####  Screenshots and GIFs
+####  Screenshots
 
-Include screenshots or GIFs to visually represent your project's interface or
+Live Chat Room
+<img width="605" alt="Screen Shot 2024-05-07 at 1 18 23 PM" src="https://github.com/S1Y333/partyEasy-backend/assets/105386341/6c90c6c5-ca0d-402c-8d8e-0cdcfca6b80a">
 
-functionality.
+
