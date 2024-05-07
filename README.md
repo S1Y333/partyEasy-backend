@@ -25,7 +25,7 @@ Anyone who wants to organize a party, small or big.
 
 ##  Backend Description
 
-There are 11 pages designed for different functionality.
+Backend handle all the database interaction using TypeORM, real-time data getting using Puppeteer
 
 ##  Implementation
 
@@ -45,14 +45,32 @@ screenshots the folder structure
  
 ###  Endpoints
 
+####package: <img width="584" alt="Screen Shot 2024-05-07 at 9 59 39 AM" src="https://github.com/S1Y333/partyEasy-backend/assets/105386341/1d45794d-bbdf-4bc8-b257-9b3636f4f3f5">
+
+####user: <img width="733" alt="Screen Shot 2024-05-07 at 10 00 01 AM" src="https://github.com/S1Y333/partyEasy-backend/assets/105386341/82a9d785-63de-478c-b9e6-207b79dae96b">
+
+####venue data:
+<img width="408" alt="Screen Shot 2024-05-07 at 10 00 23 AM" src="https://github.com/S1Y333/partyEasy-backend/assets/105386341/09ec51ad-9ea6-4940-91de-aa8f15b01485">
+
 ###  Usage
 
 npm i 
 set up .env environment variables
 config firebase admin file
-npm start to run the frontend
+npm start to run the backend
+
+#### Seed data
+npm run seed
+
+#### Synchronize databse structure
+npm run schema:sync
+
+### Database structure
+
+<img width="609" alt="Screen Shot 2024-05-07 at 9 57 49 AM" src="https://github.com/S1Y333/partyEasy-backend/assets/105386341/a47ac5e4-58db-4824-b2f3-655194595099">
 
 ##  Features
+
 
 #### Auth
 
