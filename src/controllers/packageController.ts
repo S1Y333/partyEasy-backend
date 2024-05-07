@@ -32,17 +32,16 @@ class PackageController {
         where: { email },
       });
 
-      //const creatorId = userinfo?.id;
-
-      //frontend data structure: formData.numOfGuests + formData.budget+drinkName + foodName + coordinates
       //location needs to be {  lat: number; lon: number;price: number;}
       const { coordinates, budget, numOfGuests, drink, food } = request.body;
 
+      if (!coordinates || !budget || !numOfGuests || !drink || !food) {
+        console.log("All the information needed for recommendation");
+        return;
+      }
       //form venue data to Location data format
       const venueLocations = await RepositoryHelper.venueRepo.find();
 
-      //console.log(venueLocations);
-      // console.log(request.body);
       const vennueData = venueLocations.map((venue) => {
         return {
           lat: venue.location[0],

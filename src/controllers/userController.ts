@@ -31,7 +31,10 @@ class UserController {
     newUser.username = request.body.username;
     if(request.file)
     { newUser.profilephotolink = request.file.path; }
-    console.log(JSON.stringify(newUser) + ">>>>>");
+    else {
+      newUser.profilephotolink = "uploads/smile-face.png"
+    }
+    
 
     await UserEntity.save(newUser);
     console.log("USER CREATED", newUser);

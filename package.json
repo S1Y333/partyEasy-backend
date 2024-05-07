@@ -35,6 +35,7 @@
     "nodemailer": "^6.9.13",
     "puppeteer": "^22.7.1",
     "reflect-metadata": "^0.2.2",
+    "socket.io": "^4.7.5",
     "typeorm": "^0.3.20",
     "typeorm-extension": "^3.5.1",
     "uuid": "^9.0.1"
