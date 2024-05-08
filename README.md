@@ -93,6 +93,8 @@ Cover Page (Click on PLAN NOW) -> Fill in Questionnaire (address field is integr
 Then pick the drink under user's choice (non-alcohol or alcohol) also the price of the drink is caculated based on requested number of guests and the budget.
 
 Then pick the food under user's choice category also the food price, the number of guests and the budget
+<img width="363" alt="Screen Shot 2024-05-08 at 11 44 42 AM" src="https://github.com/S1Y333/partyEasy-backend/assets/105386341/207e0e50-76ba-4a2d-9628-94780465fa1a">
+
 
 ---
 #### Real-time Chat
