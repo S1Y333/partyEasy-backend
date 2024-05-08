@@ -1,10 +1,13 @@
 import * as admin from 'firebase-admin';
 
-
 import { initializeApp } from "firebase-admin/app";
 import { getAuth } from 'firebase-admin/auth';
 
-const serviceAccount = require("../../config/fbServiceAccountKey.json");
+if (!process.env.FIREBASE_CONFIG) {
+  throw new Error("FIREBASE_CONFIG environment variable is not defined.");
+}
+//const serviceAccount = require("../../config/fbServiceAccountKey.json");
+const serviceAccount = JSON.parse(process.env.FIREBASE_CONFIG);
 
 const app = initializeApp({
   credential: admin.credential.cert(serviceAccount),
