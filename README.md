@@ -64,7 +64,7 @@ npm start to run the backend
 #### Seed data
 npm run seed
 
-#### Synchronize databse structure
+#### Synchronize database table structure
 npm run schema:sync
 
 ### Database structure
