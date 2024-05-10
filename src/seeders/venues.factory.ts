@@ -5,6 +5,7 @@ import { VenueEntity } from "../entities/venue.entity";
 export const VenueFactory = setSeederFactory(VenueEntity, (faker: Faker) => {
   const venue = new VenueEntity();
   venue.venuename = faker.location.street();
+  venue.numOfPeople = faker.number.int(100);
   venue.price = parseFloat(
     faker.commerce.price({
       min: 500,
