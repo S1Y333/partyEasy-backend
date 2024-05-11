@@ -19,7 +19,7 @@ const startSever = async () => {
     await gDB.initialize();
 
     const corsOptions = {
-      origin: process.env.FRONTEND_URL,
+      origin: process.env.FRONTEND_URL || "https://partyeasy.netlify.app",
       methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
       allowedHeaders: ["Content-Type", "authtoken", "Authorization"],
     };

@@ -7,7 +7,7 @@ export async function setupSocketIO(server: HttpServer) {
   try {
     io = new Server(server, {
       cors: {
-        origin: process.env.FRONTEND_URL || "http://localhost:3000",
+        origin: process.env.FRONTEND_URL || "https://partyeasy.netlify.app",
         // methods: ["GET", "POST"],
       },
     });
