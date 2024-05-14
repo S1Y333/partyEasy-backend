@@ -34,6 +34,7 @@ const startSever = async () => {
     app.use(express.urlencoded({ extended: true }));
 
     app.use("/api", routes);
+   // app.use("/.netlify/functions/api", routes);
       // const server = http.createServer(app);
     server.listen(SERVER_PORT, () => {
       console.log(`🚀 Server running on ${SERVER_PORT}`);
