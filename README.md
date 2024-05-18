@@ -5,7 +5,7 @@
 ##  App Overview
 
  
-The app is designed to organize party easily but also include almost everything for holding a party
+The app is designed to organize party easily but also include almost everything for holding a party, live app: https://partyeasy.netlify.app/ (Please bear with the downtime as the policy for free web service from render.com)
 
 
 
