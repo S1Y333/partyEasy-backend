@@ -19,7 +19,7 @@ const startSever = async () => {
     await gDB.initialize();
 
     const corsOptions = {
-      origin: process.env.FRONTEND_URL,
+      origin: process.env.FRONTEND_URL || "https://partyeasy.netlify.app",
       methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
       allowedHeaders: ["Content-Type", "authtoken", "Authorization"],
     };
@@ -34,6 +34,7 @@ const startSever = async () => {
     app.use(express.urlencoded({ extended: true }));
 
     app.use("/api", routes);
+   // app.use("/.netlify/functions/api", routes);
       // const server = http.createServer(app);
     server.listen(SERVER_PORT, () => {
       console.log(`🚀 Server running on ${SERVER_PORT}`);

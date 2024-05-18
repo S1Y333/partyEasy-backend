@@ -13,7 +13,7 @@ class UserController {
     const { email } = user;
     // const avatarFile = request.file.path; //store in db
     console.log("!!!!!" + JSON.stringify(request.body) + "<<<<<");
-
+    console.log(request.file.path);
     
     //if email/username has existed
     const existingUser = await RespositoryHelper.userRepo.findOne({
@@ -31,9 +31,9 @@ class UserController {
     newUser.username = request.body.username;
     if(request.file)
     { newUser.profilephotolink = request.file.path; }
-    else {
-      newUser.profilephotolink = "uploads/smile-face.png"
-    }
+    // else {
+    //   newUser.profilephotolink = "uploads/smile-face.png"
+    // }
     
 
     await UserEntity.save(newUser);
