@@ -3,9 +3,9 @@ import { Server as HttpServer } from "http";
 
 let io: Server;
 
-export async function setupSocketIO(server: HttpServer) {
+export async function setupSocketIO(expressServer) {
   try {
-    io = new Server(server, {
+    io = new Server(expressServer, {
       cors: {
         origin: process.env.FRONTEND_URL || "https://partyeasy.netlify.app",
         // methods: ["GET", "POST"],
@@ -20,7 +20,7 @@ export async function setupSocketIO(server: HttpServer) {
       socket.emit("message", "Welcome to Party Easy Chat Zone!");
 
       // Upon connection - to all others
-      // socket.broadcast.emit('message', `User ${socket.id.substring(0, 5)}} connected`)
+      socket.broadcast.emit('message', `User ${socket.id.substring(0, 5)}} connected`)
 
       // Listening for a message event
       socket.on("message", (data) => {

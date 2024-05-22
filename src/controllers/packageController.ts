@@ -184,14 +184,15 @@ class PackageController {
             newPackage.drinks = selectedDrink;
             newPackage.foods = selectedFood;
 
-          if(userinfo)
-            {newPackage.creator = userinfo;
-            newPackage.save().then((res) => {
-              //save info to db and return it to frontendd
-              response.json({
-                data: newPackage,
+            if (userinfo) {
+              newPackage.creator = userinfo;
+              newPackage.save().then((res) => {
+                //save info to db and return it to frontendd
+                response.json({
+                  data: newPackage,
+                });
               });
-            });}
+            }
           })
           .catch((error) => {
             console.log(error);
@@ -246,7 +247,7 @@ class PackageController {
       });
 
       const id = userinfo?.id;
-      console.log(id +"USERID!!!")
+      console.log(id + "USERID!!!");
 
       const userPackagelist = await RepositoryHelper.packageListRepo.find({
         where: { creator: { id } },
@@ -258,6 +259,36 @@ class PackageController {
       });
     } catch (error) {
       console.log(error);
+    }
+  }
+
+  static async likeOnePackage(request: CustomRequest, response: Response) {
+    try {
+      const user = request.user;
+      const packageId = parseInt(request.params.packageId);
+
+      //find user
+       const { email } = user;
+
+       const userinfo = await RepositoryHelper.userRepo.findOne({
+         where: { email },
+       });
+      
+      
+      //add packageid to the likesPackage
+      userinfo?.likesPackages.add({
+         packageId : packageId
+      })
+      console.log(userinfo?.likesPackages);
+      //find package
+      const packageInfo = await RepositoryHelper.packageListRepo.findOne({ where: { id: packageId } });
+      const likes =  packageInfo?.likes
+      // { packageInfo?.likes++; }
+     
+      
+      
+    } catch (error) {
+      
     }
   }
 }

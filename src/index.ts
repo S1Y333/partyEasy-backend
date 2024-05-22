@@ -26,8 +26,8 @@ const startSever = async () => {
 
     app.use(cors(corsOptions));
 
-   const server = http.createServer(app);
-    // app.use(express.static("public"));
+   //const server = http.createServer(app);
+    //app.use(express.static("public"));
     app.use("/uploads", express.static(path.join(__dirname, '../uploads')));
     app.use(express.json());
 
@@ -36,11 +36,11 @@ const startSever = async () => {
     app.use("/api", routes);
    // app.use("/.netlify/functions/api", routes);
       // const server = http.createServer(app);
-    server.listen(SERVER_PORT, () => {
+    const expressServer = app.listen(SERVER_PORT, () => {
       console.log(`🚀 Server running on ${SERVER_PORT}`);
     });
     try {
-      setupSocketIO(server);
+      setupSocketIO(expressServer);
      
     console.log("Socket.IO has been initialized successfully.");
   } catch (error) {
