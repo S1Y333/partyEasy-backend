@@ -24,8 +24,8 @@ export class UserEntity extends BaseTemplate {
   @OneToMany(() => PackageListEntity, (pack) => pack.creator)
   packages: PackageListEntity[];
 
-  @Column("json", { nullable: true, default: null })
-  likesPackages: any | null = null;
+  @Column("json", { nullable: true})
+  likesPackages: any ;
 
   @Column("json", { nullable: true, default: null })
   savesPackages: any | null = null;

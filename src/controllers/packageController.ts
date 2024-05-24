@@ -268,27 +268,40 @@ class PackageController {
       const packageId = parseInt(request.params.packageId);
 
       //find user
-       const { email } = user;
+      const { email } = user;
 
-       const userinfo = await RepositoryHelper.userRepo.findOne({
-         where: { email },
-       });
-      
-      
-      //add packageid to the likesPackage
-      userinfo?.likesPackages.add({
-         packageId : packageId
-      })
-      console.log(userinfo?.likesPackages);
-      //find package
-      const packageInfo = await RepositoryHelper.packageListRepo.findOne({ where: { id: packageId } });
-      const likes =  packageInfo?.likes
-      // { packageInfo?.likes++; }
+      const userinfo = await RepositoryHelper.userRepo.findOne({
+        where: { email },
+      });
      
-      
-      
+
+     
+      //add packageid to the likesPackage
+      if (userinfo) {
+        // Ensure likesPackages is initialized within userinfo
+        if (!userinfo.likesPackages) {
+          userinfo.likesPackages = {};
+        }
+        
+        userinfo.likesPackages[`${packageId}`] = packageId;
+        console.log(userinfo.likesPackages);
+        userinfo.save();
+      }
+
+      //find package
+      const packageInfo = await RepositoryHelper.packageListRepo.findOne({
+        where: { id: packageId },
+      });
+
+      if (packageInfo) {
+        packageInfo.likes++;
+        packageInfo.save();
+        response.json({
+          packageInfo,
+        });
+      }
     } catch (error) {
-      
+         console.log(error);
     }
   }
 }
