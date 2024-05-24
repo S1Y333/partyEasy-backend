@@ -38,19 +38,16 @@ https://github.com/S1Y333/partyEasy-frontend
 --TypeORM
 --Puppeteer
 --Unsplash API
-###  Sitemap
-
-screenshots the folder structure
  
 ###  Endpoints
 
-####package: 
+package: 
 <img width="584" alt="Screen Shot 2024-05-07 at 9 59 39 AM" src="https://github.com/S1Y333/partyEasy-backend/assets/105386341/1d45794d-bbdf-4bc8-b257-9b3636f4f3f5">
 
-####user: 
+user: 
 <img width="733" alt="Screen Shot 2024-05-07 at 10 00 01 AM" src="https://github.com/S1Y333/partyEasy-backend/assets/105386341/82a9d785-63de-478c-b9e6-207b79dae96b">
 
-####venue data:
+venue data:
 <img width="408" alt="Screen Shot 2024-05-07 at 10 00 23 AM" src="https://github.com/S1Y333/partyEasy-backend/assets/105386341/09ec51ad-9ea6-4940-91de-aa8f15b01485">
 
 ###  Usage
@@ -114,7 +111,15 @@ The changes made to database structure will be happening in code instead of data
 
 --
 
-##  4. More info
+##  4. In progress features
+
+- user like, save, delete packages
+- private messageing: using Redis and other tools
+- backend auto renew webscrapping data every 7 days
+- server pagination for package list
+- Role Based Access Control: admin can add website to get data from
+
+##  5. More info
 
 #### Intro Slides
 
