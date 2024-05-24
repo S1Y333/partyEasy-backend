@@ -13,19 +13,18 @@ The app is designed to organize party easily but also include almost everything 
 
 City life is around "BUSY". We're all busy with work, kids and everyday work & life. Sometimes we really want to organize a party to reunion with old friends or team members, even a surprise party for kids or your family, but planning a party is time consuming. Here, our app is to the rescue.
 
-  
-
-###  User Profile
-
-  
+###  User Profile  
 
 Anyone who wants to organize a party, small or big.
 
-  
 
 ##  Backend Description
 
 Backend handle all the database interaction using TypeORM, real-time data getting using Puppeteer
+
+## Frontend 
+
+https://github.com/S1Y333/partyEasy-frontend
 
 ##  Implementation
 
@@ -117,8 +116,21 @@ The changes made to database structure will be happening in code instead of data
 
 ##  4. More info
 
-####  Screenshots
+#### Intro Slides
 
+
+<img width="735" alt="Screen Shot 2024-05-24 at 11 15 48 AM" src="https://github.com/S1Y333/partyEasy-backend/assets/105386341/9fdf3da2-8035-4514-b908-172ec127c774">
+<img width="737" alt="Screen Shot 2024-05-24 at 11 15 59 AM" src="https://github.com/S1Y333/partyEasy-backend/assets/105386341/447b31e5-3481-49a2-8350-d933e3d9bfbc">
+<img width="734" alt="Screen Shot 2024-05-24 at 11 18 13 AM" src="https://github.com/S1Y333/partyEasy-backend/assets/105386341/9f41f882-93e3-4d6d-b16c-8f5971db798e">
+<img width="735" alt="Screen Shot 2024-05-24 at 11 16 21 AM" src="https://github.com/S1Y333/partyEasy-backend/assets/105386341/ca49b888-15f2-41cc-ae77-2623782510c7">
+<img width="736" alt="Screen Shot 2024-05-24 at 11 16 33 AM" src="https://github.com/S1Y333/partyEasy-backend/assets/105386341/9cd83254-405d-4dcd-a846-078258e224b7">
+<img width="735" alt="Screen Shot 2024-05-24 at 11 16 41 AM" src="https://github.com/S1Y333/partyEasy-backend/assets/105386341/12bc18a9-ad89-4a9c-9e48-bbf83c0954ec">
+<img width="738" alt="Screen Shot 2024-05-24 at 11 16 50 AM" src="https://github.com/S1Y333/partyEasy-backend/assets/105386341/1e1e4a69-7f56-4eaa-b369-33eefee94dd4">
+<img width="736" alt="Screen Shot 2024-05-24 at 11 17 00 AM" src="https://github.com/S1Y333/partyEasy-backend/assets/105386341/4ba76103-44dd-401d-aa7f-1eb689bec0b7">
+<img width="736" alt="Screen Shot 2024-05-24 at 11 17 10 AM" src="https://github.com/S1Y333/partyEasy-backend/assets/105386341/448a464e-6fcc-42f2-9d93-4bec7df605b9">
+<img width="737" alt="Screen Shot 2024-05-24 at 11 17 21 AM" src="https://github.com/S1Y333/partyEasy-backend/assets/105386341/8e1a2212-9e11-495b-8e6e-1fd97653c9d2">
+
+####  Screenshots
 
 <img width="605" alt="Screen Shot 2024-05-07 at 1 18 23 PM" src="https://github.com/S1Y333/partyEasy-backend/assets/105386341/6c90c6c5-ca0d-402c-8d8e-0cdcfca6b80a">
 <img width="216" alt="user profile page with user created package" src="https://github.com/S1Y333/partyEasy-backend/assets/105386341/867be32d-1f01-466d-94d6-eae3ced5842e">
