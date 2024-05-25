@@ -273,16 +273,14 @@ class PackageController {
       const userinfo = await RepositoryHelper.userRepo.findOne({
         where: { email },
       });
-     
 
-     
       //add packageid to the likesPackage
       if (userinfo) {
         // Ensure likesPackages is initialized within userinfo
         if (!userinfo.likesPackages) {
           userinfo.likesPackages = {};
         }
-        
+
         userinfo.likesPackages[`${packageId}`] = packageId;
         console.log(userinfo.likesPackages);
         userinfo.save();
@@ -301,7 +299,50 @@ class PackageController {
         });
       }
     } catch (error) {
-         console.log(error);
+      console.log(error);
+    }
+  }
+
+  static async saveOnePackage(request: CustomRequest, response: Response) {
+    try {
+
+       const user = request.user;
+       const packageId = parseInt(request.params.packageId);
+
+       //find user
+       const { email } = user;
+
+       const userinfo = await RepositoryHelper.userRepo.findOne({
+         where: { email },
+       });
+
+       //add packageid to the likesPackage
+       if (userinfo) {
+         // Ensure likesPackages is initialized within userinfo
+         if (!userinfo.savesPackages) {
+           userinfo.savesPackages = {};
+         }
+
+         userinfo.savesPackages[`${packageId}`] = packageId;
+         console.log(userinfo.savesPackages);
+         userinfo.save();
+       }
+
+       //find package
+       const packageInfo = await RepositoryHelper.packageListRepo.findOne({
+         where: { id: packageId },
+       });
+
+       if (packageInfo) {
+         packageInfo.saves++;
+         packageInfo.save();
+         response.json({
+           packageInfo,
+         });
+       }
+
+    } catch (error) {
+      console.log(error);
     }
   }
 }

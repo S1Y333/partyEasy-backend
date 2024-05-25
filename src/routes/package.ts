@@ -9,5 +9,6 @@ router.get("/", PackageController.fetchAllPackages);
 router.get("/:packageId", PackageController.fetchPackageByPackageId);
 router.post("/userPackage", authCheck, PackageController.fetchPackagesByUser);
 router.post("/like/:packageId", authCheck, PackageController.likeOnePackage);
+router.post("/save/:packageId", authCheck, PackageController.saveOnePackage);
 //
 export default router;
