@@ -280,6 +280,7 @@ class PackageController {
         if (!userinfo.likesPackages) {
           userinfo.likesPackages = {};
         }
+        //check if it exists in likesPackage array, if yes, then return; if ()
 
         userinfo.likesPackages[`${packageId}`] = packageId;
         console.log(userinfo.likesPackages);
@@ -303,44 +304,116 @@ class PackageController {
     }
   }
 
+  static async unLikeOnePackage(request: CustomRequest, response: Response) {
+    try {
+      const user = request.user;
+      const packageId = parseInt(request.params.packageId);
+
+      //find user
+      const { email } = user;
+
+      const userinfo = await RepositoryHelper.userRepo.findOne({
+        where: { email },
+      });
+
+      //add packageid to the likesPackage
+      if (userinfo) {
+        delete userinfo.likesPackages[`${packageId}`];
+
+        console.log(userinfo.likesPackages);
+        userinfo.save();
+      }
+
+      //find package
+      const packageInfo = await RepositoryHelper.packageListRepo.findOne({
+        where: { id: packageId },
+      });
+
+      if (packageInfo) {
+        packageInfo.likes--;
+        packageInfo.save();
+        response.json({
+          packageInfo,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   static async saveOnePackage(request: CustomRequest, response: Response) {
     try {
+      const user = request.user;
+      const packageId = parseInt(request.params.packageId);
 
-       const user = request.user;
-       const packageId = parseInt(request.params.packageId);
+      //find user
+      const { email } = user;
 
-       //find user
-       const { email } = user;
+      const userinfo = await RepositoryHelper.userRepo.findOne({
+        where: { email },
+      });
 
-       const userinfo = await RepositoryHelper.userRepo.findOne({
-         where: { email },
-       });
+      //add packageid to the likesPackage
+      if (userinfo) {
+        // Ensure likesPackages is initialized within userinfo
+        if (!userinfo.savesPackages) {
+          userinfo.savesPackages = {};
+        }
 
-       //add packageid to the likesPackage
-       if (userinfo) {
-         // Ensure likesPackages is initialized within userinfo
-         if (!userinfo.savesPackages) {
-           userinfo.savesPackages = {};
-         }
+        userinfo.savesPackages[`${packageId}`] = packageId;
+        console.log(userinfo.savesPackages);
+        userinfo.save();
+      }
 
-         userinfo.savesPackages[`${packageId}`] = packageId;
-         console.log(userinfo.savesPackages);
-         userinfo.save();
-       }
+      //find package
+      const packageInfo = await RepositoryHelper.packageListRepo.findOne({
+        where: { id: packageId },
+      });
 
-       //find package
-       const packageInfo = await RepositoryHelper.packageListRepo.findOne({
-         where: { id: packageId },
-       });
+      if (packageInfo) {
+        packageInfo.saves++;
+        packageInfo.save();
+        response.json({
+          packageInfo,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
-       if (packageInfo) {
-         packageInfo.saves++;
-         packageInfo.save();
-         response.json({
-           packageInfo,
-         });
-       }
+  static async unSaveOnePackage(request: CustomRequest, response: Response) {
+    try {
+      const user = request.user;
+      const packageId = parseInt(request.params.packageId);
 
+      //find user
+      const { email } = user;
+
+      const userinfo = await RepositoryHelper.userRepo.findOne({
+        where: { email },
+      });
+
+      //add packageid to the likesPackage
+      if (userinfo) {
+        delete userinfo.savesPackages[`${packageId}`];
+
+        console.log(userinfo.savesPackages);
+        userinfo.save();
+      }
+
+      //find package
+      const packageInfo = await RepositoryHelper.packageListRepo.findOne({
+        where: { id: packageId },
+      });
+
+      if (packageInfo) {
+        packageInfo.saves--;
+        packageInfo.save();
+        response.json({
+          packageInfo,
+        });
+      }
     } catch (error) {
       console.log(error);
     }
