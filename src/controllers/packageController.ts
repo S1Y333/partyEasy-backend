@@ -9,6 +9,7 @@ import { LessThan, Repository } from "typeorm";
 import { FoodEntity } from "../entities/food.entity";
 import { DrinkEntity } from "../entities/drinks.entity";
 import { PackageListEntity } from "../entities/packageList.entity";
+import {VisionTag}  from "../services/VisionTag";
 
 interface CustomRequest extends Request {
   user?: any; // Define the user property as optional
@@ -184,14 +185,15 @@ class PackageController {
             newPackage.drinks = selectedDrink;
             newPackage.foods = selectedFood;
 
-          if(userinfo)
-            {newPackage.creator = userinfo;
-            newPackage.save().then((res) => {
-              //save info to db and return it to frontendd
-              response.json({
-                data: newPackage,
+            if (userinfo) {
+              newPackage.creator = userinfo;
+              newPackage.save().then((res) => {
+                //save info to db and return it to frontendd
+                response.json({
+                  data: newPackage,
+                });
               });
-            });}
+            }
           })
           .catch((error) => {
             console.log(error);
@@ -205,6 +207,8 @@ class PackageController {
 
   static async fetchAllPackages(request: Request, response: Response) {
     try {
+      // VisionTag("/Users/siyizhang/Desktop/home1.png", undefined);
+
       const query = RepositoryHelper.packageListRepo
         .createQueryBuilder("entity")
         .leftJoinAndSelect("entity.venues", "venues");
@@ -246,7 +250,7 @@ class PackageController {
       });
 
       const id = userinfo?.id;
-      console.log(id +"USERID!!!")
+      console.log(id + "USERID!!!");
 
       const userPackagelist = await RepositoryHelper.packageListRepo.find({
         where: { creator: { id } },
@@ -256,6 +260,163 @@ class PackageController {
       response.json({
         userPackagelist,
       });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  static async likeOnePackage(request: CustomRequest, response: Response) {
+    try {
+      const user = request.user;
+      const packageId = parseInt(request.params.packageId);
+
+      //find user
+      const { email } = user;
+
+      const userinfo = await RepositoryHelper.userRepo.findOne({
+        where: { email },
+      });
+
+      //add packageid to the likesPackage
+      if (userinfo) {
+        // Ensure likesPackages is initialized within userinfo
+        if (!userinfo.likesPackages) {
+          userinfo.likesPackages = {};
+        }
+        //check if it exists in likesPackage array, if yes, then return; if ()
+
+        userinfo.likesPackages[`${packageId}`] = packageId;
+        console.log(userinfo.likesPackages);
+        userinfo.save();
+      }
+
+      //find package
+      const packageInfo = await RepositoryHelper.packageListRepo.findOne({
+        where: { id: packageId },
+      });
+
+      if (packageInfo) {
+        packageInfo.likes++;
+        packageInfo.save();
+        response.json({
+          packageInfo,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  static async unLikeOnePackage(request: CustomRequest, response: Response) {
+    try {
+      const user = request.user;
+      const packageId = parseInt(request.params.packageId);
+
+      //find user
+      const { email } = user;
+
+      const userinfo = await RepositoryHelper.userRepo.findOne({
+        where: { email },
+      });
+
+      //add packageid to the likesPackage
+      if (userinfo) {
+        delete userinfo.likesPackages[`${packageId}`];
+
+        console.log(userinfo.likesPackages);
+        userinfo.save();
+      }
+
+      //find package
+      const packageInfo = await RepositoryHelper.packageListRepo.findOne({
+        where: { id: packageId },
+      });
+
+      if (packageInfo) {
+        packageInfo.likes--;
+        packageInfo.save();
+        response.json({
+          packageInfo,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  static async saveOnePackage(request: CustomRequest, response: Response) {
+    try {
+      const user = request.user;
+      const packageId = parseInt(request.params.packageId);
+
+      //find user
+      const { email } = user;
+
+      const userinfo = await RepositoryHelper.userRepo.findOne({
+        where: { email },
+      });
+
+      //add packageid to the likesPackage
+      if (userinfo) {
+        // Ensure likesPackages is initialized within userinfo
+        if (!userinfo.savesPackages) {
+          userinfo.savesPackages = {};
+        }
+
+        userinfo.savesPackages[`${packageId}`] = packageId;
+        console.log(userinfo.savesPackages);
+        userinfo.save();
+      }
+
+      //find package
+      const packageInfo = await RepositoryHelper.packageListRepo.findOne({
+        where: { id: packageId },
+      });
+
+      if (packageInfo) {
+        packageInfo.saves++;
+        packageInfo.save();
+        response.json({
+          packageInfo,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  static async unSaveOnePackage(request: CustomRequest, response: Response) {
+    try {
+      const user = request.user;
+      const packageId = parseInt(request.params.packageId);
+
+      //find user
+      const { email } = user;
+
+      const userinfo = await RepositoryHelper.userRepo.findOne({
+        where: { email },
+      });
+
+      //add packageid to the likesPackage
+      if (userinfo) {
+        delete userinfo.savesPackages[`${packageId}`];
+
+        console.log(userinfo.savesPackages);
+        userinfo.save();
+      }
+
+      //find package
+      const packageInfo = await RepositoryHelper.packageListRepo.findOne({
+        where: { id: packageId },
+      });
+
+      if (packageInfo) {
+        packageInfo.saves--;
+        packageInfo.save();
+        response.json({
+          packageInfo,
+        });
+      }
     } catch (error) {
       console.log(error);
     }

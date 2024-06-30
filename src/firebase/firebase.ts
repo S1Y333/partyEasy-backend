@@ -1,8 +1,22 @@
-import * as admin from 'firebase-admin';
+// import * as admin from 'firebase-admin';
+
+// import { initializeApp } from "firebase-admin/app";
+// import { getAuth } from 'firebase-admin/auth';
+
+// const serviceAccount = require("../../config/fbServiceAccountKey.json");
+
+// const app = initializeApp({
+//   credential: admin.credential.cert(serviceAccount),
+// });
+
+// export const defaultAuth = getAuth(app);
+
+import * as admin from "firebase-admin";
 
 import { initializeApp } from "firebase-admin/app";
-import { getAuth } from 'firebase-admin/auth';
+import { getAuth } from "firebase-admin/auth";
 import * as fs from "fs";
+import path from "path";
 
 
 // Define the type for your JSON data
@@ -19,9 +33,9 @@ interface MyData {
   client_x509_cert_url: string;
   universe_domain: string;
 }
-
+const filePath = path.resolve(__dirname, '../config/fbServiceAccountKey.json')
 // Read the JSON file
-const rawdata: Buffer = fs.readFileSync('../../config/fbServiceAccountKey.json');
+const rawdata: Buffer = fs.readFileSync(filePath);
 let jsonData: MyData = JSON.parse(rawdata.toString());
 
 // Replace placeholders with environment variable values
@@ -38,21 +52,6 @@ jsonData = {
     jsonData.client_x509_cert_url,
 };
 
-
-// Convert jsonData into a ServiceAccount object
-// const serviceAccount = {
-//   type: jsonData.type,
-//   project_id: jsonData.project_id,
-//   private_key_id: jsonData.private_key_id,
-//   private_key: jsonData.private_key,
-//   client_email: jsonData.client_email,
-//   client_id: jsonData.client_id,
-//   auth_uri: jsonData.auth_uri,
-//   token_uri: jsonData.token_uri,
-//   auth_provider_x509_cert_url: jsonData.auth_provider_x509_cert_url,
-//   client_x509_cert_url: jsonData.client_x509_cert_url
-// };
-// const serviceAccount = require("../../config/fbServiceAccountKey.json");
 
 const app = initializeApp({
   credential: admin.credential.cert(jsonData as admin.ServiceAccount),
