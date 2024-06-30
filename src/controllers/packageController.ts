@@ -9,6 +9,7 @@ import { LessThan, Repository } from "typeorm";
 import { FoodEntity } from "../entities/food.entity";
 import { DrinkEntity } from "../entities/drinks.entity";
 import { PackageListEntity } from "../entities/packageList.entity";
+import {VisionTag}  from "../services/VisionTag";
 
 interface CustomRequest extends Request {
   user?: any; // Define the user property as optional
@@ -206,6 +207,8 @@ class PackageController {
 
   static async fetchAllPackages(request: Request, response: Response) {
     try {
+      // VisionTag("/Users/siyizhang/Desktop/home1.png", undefined);
+
       const query = RepositoryHelper.packageListRepo
         .createQueryBuilder("entity")
         .leftJoinAndSelect("entity.venues", "venues");

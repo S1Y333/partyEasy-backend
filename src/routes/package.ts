@@ -13,5 +13,6 @@ router.post("/like/:packageId", authCheck, PackageController.likeOnePackage);
 router.post("/unlike/:packageId", authCheck, PackageController.unLikeOnePackage);
 
 router.post("/save/:packageId", authCheck, PackageController.saveOnePackage);
+router.post("/unsave/:packageId", authCheck, PackageController.unSaveOnePackage);
 //
 export default router;
